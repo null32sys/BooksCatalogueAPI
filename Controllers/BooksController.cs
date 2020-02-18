@@ -14,18 +14,18 @@ namespace BooksCatalogueAPI.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly AzureStorageConfig storageConfig = null;
- 
-        public BooksController(MyDatabaseContext context, IOptions<AzureStorageConfig> config)
-        {
-        _context = context;
-        storageConfig = config.Value;
-        }
         private readonly MyDatabaseContext _context;
+        private readonly AzureStorageConfig storageConfig = null;
 
         public BooksController(MyDatabaseContext context)
         {
             _context = context;
+        }
+    
+        public BooksController(MyDatabaseContext context, IOptions<AzureStorageConfig> config) 
+        {
+            _context = context;
+            storageConfig = config.Value;
         }
 
         // GET: api/Books
